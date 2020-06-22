@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DetailButton from './DetailButton';
 
 const Username = (props) => {
@@ -92,21 +92,26 @@ const UserPanel = (props) => {
                 topLevelListItem.push(<li key={key}>{key}: {value}</li>)
             }
         }
-        return <div>
-            <hr />
+        return (
+            <div>
+                <hr />
                 <Username name={props.user.name} />
                 <UserPicture picture={props.user.picture} />
-                <UserDOB dob={props.user.dob} />
-                <UserID id={props.user.id} />
-                <UserRegistered registered={props.user.registered} />
-                <UserLogin login={props.user.login} />
-                <UserLocation location={props.user.location} />
-            <ul>
-                <h3>User Information</h3>
-                {topLevelListItem}
-            </ul>
-            <DetailButton />
-        </div>
+                <div>
+                    <DetailButton>
+                        <UserDOB dob={props.user.dob} />
+                        <UserID id={props.user.id} />
+                        <UserRegistered registered={props.user.registered} />
+                        <UserLogin login={props.user.login} />
+                        <UserLocation location={props.user.location} />
+                        <ul>
+                            <h3>User Information</h3>
+                            {topLevelListItem}
+                        </ul>
+                    </DetailButton>
+                </div>
+            </div>
+        );
     }
 }
 

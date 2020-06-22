@@ -1,20 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 class DetailButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isClicked: false
+            isClicked: true,
+            isHidden: true
         };
+        this.toggleDetails = this.toggleDetails.bind(this);
     }
 
-    toggle = () => {
+    toggleDetails = () => {
+        this.setState ((details) => {
+            return {
+                isHidden: !details.isHidden
+            };
+        })
         this.setState({isClicked: !this.state.isClicked})
     }
 
     render() {
+        
         return (
-            <button onClick={this.toggle}>{this.state.isClicked ? 'Show Details' : 'Hide Details'}</button>
+            <button onClick={this.toggleDetails}>{this.state.isClicked ? 'Show Details' : 'Hide Details'}</button>
         )
     }
 }
