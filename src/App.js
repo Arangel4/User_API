@@ -40,7 +40,9 @@ class App extends Component {
     }
     return (
       <div>
-        <h1>User Information</h1>
+        <header>
+          <h1>Address Book</h1>
+        </header>
         {theUserPanel}
       </div>
     );
