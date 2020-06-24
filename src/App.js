@@ -6,6 +6,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    // Constructor variable
     this.state = {
       theUsers: []
     };

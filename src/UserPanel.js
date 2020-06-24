@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Check there is a UserDOB object, and displays it accordingly.
 const UserDOB = (props) => {
     let userDOBJSX = null;
     if (props.dob !== null && typeof props.dob === 'object') {
@@ -8,6 +9,7 @@ const UserDOB = (props) => {
     return userDOBJSX;
 }
 
+// Check there is a UserID object, and displays it accordingly.
 const UserID = (props) => {
     let userIDJSX = null;
     if (props.id !== null && typeof props.id === 'object') {
@@ -16,6 +18,7 @@ const UserID = (props) => {
     return userIDJSX;
 }
 
+// Check there is a UserLocation object, and displays it accordingly.
 const UserLocation = (props) => {
     let userLocationJSX = null;
     if (props.location !== null && typeof props.location === 'object') {
@@ -41,6 +44,7 @@ const UserLocation = (props) => {
     return userLocationJSX;
 }
 
+// Check there is a UserLogin object, and displays it accordingly.
 const UserLogin = (props) => {
     let userLoginJSX = null;
     if (props.login !== null && typeof props.login === 'object') {
@@ -58,6 +62,7 @@ const UserLogin = (props) => {
     return userLoginJSX;
 }
 
+// Check there is a Usernames object, and displays it accordingly.
 const Username = (props) => {
     let userNameJSX = null;
     if (props.name !== null && typeof props.name === 'object') {
@@ -66,6 +71,7 @@ const Username = (props) => {
     return userNameJSX;
 }
 
+// Check there is a UserPicture object, and displays it accordingly.
 const UserPicture = (props) => {
     let userPictureJSX = null;
     if (props.picture !== null && typeof props.picture === 'object') {
@@ -74,6 +80,7 @@ const UserPicture = (props) => {
     return userPictureJSX;
 }
 
+// Check there is a UserRegistered object, and displays it accordingly.
 const UserRegistered = (props) => {
     let userRegisteredJSX = null;
     if (props.registered !== null && typeof props.registered === 'object') {
@@ -89,9 +96,11 @@ class UserPanel extends Component {
             isClicked: false
         };
     }
-    change = () => {
+    // Allows the button to register when the button is clicked and then swtiching.
+    toggle = () => {
         this.setState({isClicked: !this.state.isClicked});
     }
+    
     render() {
         if (this.props.user !== null) {
             let topLevelListItem = [];
@@ -101,6 +110,7 @@ class UserPanel extends Component {
                 }
             }
             let userDetails = null;
+            // If statement will show all user details if the details are hidden.
             if (this.state.isClicked === true) {
                 userDetails = (<div id={this.props.user.login.uuid}>
                     <ul>
@@ -112,17 +122,18 @@ class UserPanel extends Component {
                         <UserLocation location={this.props.user.location} />
                         <UserLogin login={this.props.user.login} />
                         <UserRegistered registered={this.props.user.registered} />
-                        <button key="displayUser" index={this.props.user.login.uuid} onClick={() => this.change("displayUser")}>Hide Details</button>
+                        <button key="displayUser" index={this.props.user.login.uuid} onClick={() => this.toggle("displayUser")}>Hide Details</button>
                     </ul>
                 </div>)
             }
+            // Will hide all the user details if the details are displayed.
             else {
                 userDetails = (<div id={this.props.user.login.uuid}>
                     <ul>
                         <Username name={this.props.user.name} />
                         <UserPicture picture={this.props.user.picture} />
                         <div>
-                            <button key="displayUser" index={this.props.user.login.uuid} onClick={() => this.change("displayUser")}>Show Details</button>
+                            <button key="displayUser" index={this.props.user.login.uuid} onClick={() => this.toggle("displayUser")}>Show Details</button>
                         </div>
                     </ul>
                 </div>)
